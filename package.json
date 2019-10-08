@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/riyacchi/hinoiri#readme",
   "dependencies": {
-    "chariot.js": "github:riyacchi/chariot.js#dev"
+    "axios": "^0.19.0",
+    "chariot.js": "github:riyacchi/chariot.js#dev",
+    "eris-lavalink": "^1.0.2",
+    "ws": "^7.1.2"
   }
 }

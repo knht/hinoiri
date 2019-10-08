@@ -21,3 +21,5 @@ class HinoiriReady extends Chariot.Event {
         this.client.editStatus('online', { name: 'J-Pop and K-Pop', type: 2 });
     }
 }
+
+module.exports = new HinoiriReady();
