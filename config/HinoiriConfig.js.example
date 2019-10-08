@@ -1,0 +1,14 @@
+module.exports = {
+    token: '',
+    erisOptions: {},
+    chariotOptions: {},
+    lavalink: {
+        nodes: [
+            {}
+        ],
+        regions: {
+            eu: ['eu', 'amsterdam', 'frankfurt', 'russia', 'hongkong', 'singapore', 'sydney'],
+            us: ['us', 'brazil']
+        }
+    }
+}
