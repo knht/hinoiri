@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/riyacchi/hinoiri/issues"
   },
-  "homepage": "https://github.com/riyacchi/hinoiri#readme"
+  "homepage": "https://github.com/riyacchi/hinoiri#readme",
+  "dependencies": {
+    "chariot.js": "github:riyacchi/chariot.js#dev"
+  }
 }
