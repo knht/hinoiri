@@ -15,7 +15,7 @@ class HinoiriLavalink {
     async resolveTracks(search) {
         const result = await axios.get(`http://${HinoiriConfig.lavalink.nodes[0].host}:${HinoiriConfig.lavalink.nodes[0].port}/loadtracks?identifier=${search}`, {
             headers: {
-                'Authorization': Config.lavalink.nodes[0].password,
+                'Authorization': HinoiriConfig.lavalink.nodes[0].password,
                 'Accept': 'application/json'
             }
         });
