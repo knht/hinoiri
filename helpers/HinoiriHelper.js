@@ -9,6 +9,28 @@ class HinoiriHelper {
     }
 
     /**
+     * Scrape Bing images for a given search query and NSFW filter
+     * @param {string} query A search query 
+     * @param {boolean} nsfw Whether the search should include NSFW images or not
+     * @returns {Promise<string[]>} An array containing all fetched images
+     */
+    async scrapeBingImages(query, nsfw) {
+        const sanitizedQuery = query.trim();
+        const url = `http://www.bing.com/images/search?q=${encodeURIComponent(sanitizedQuery)}&view=detailv2&adlt=${(nsfw) ? 'off' : 'moderate'}`;
+        const responseBody = await axios.get(url);
+        const $ = cheerio.load(responseBody.data);
+        
+        let results = [];
+
+        $('.item a[class="thumb"]').each(function(element) {
+            const item = $(this).attr('href');
+            results.push(item);
+        });
+
+        return results;
+    }
+
+    /**
      * Execute a websocket heartbeat interval
      * @param {Number} interval An interval at which the heartbeat should be executed 
      * @param {Object} websocket A websocket object
