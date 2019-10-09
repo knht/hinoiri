@@ -19,6 +19,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "chariot.js": "github:riyacchi/chariot.js#dev",
+    "cheerio": "^1.0.0-rc.3",
     "eris-lavalink": "^1.0.2",
     "ws": "^7.1.2"
   }

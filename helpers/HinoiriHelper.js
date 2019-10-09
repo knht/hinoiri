@@ -1,5 +1,7 @@
 const Chariot = require('chariot.js');
 const WebSocket = require('ws');
+const cheerio = require('cheerio');
+const axios = require('axios');
 const HinoiriLavalink = require('./voice/Lavalink');
 
 class HinoiriHelper {
