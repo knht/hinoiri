@@ -39,7 +39,7 @@ class Hinoiri extends Chariot.Client {
             heartbeatInterval = null;
         }
 
-        ws.onmessage = (message) => {
+        ws.onmessage = async (message) => {
             if (!message.data.length) return;
 
             let response = null;
@@ -64,9 +64,20 @@ class Hinoiri extends Chariot.Client {
                     }
 
                     const data = response.d.song;
+                    let coverImage = 'https://img.kirameki.one/3OqzABNx.png';
+
+                    if (data.albums[0] && data.albums[0].image) {
+                        coverImage = `https://cdn.listen.moe/covers/${data.albums[0].image}`;
+                    } else {
+                        const scrapedCoverImage = await HinoiriHelper.scrapeBingImages(`${data.title} by ${data.artists[0].name}`);
+
+                        if (scrapedCoverImage.length > 0) {
+                            coverImage = scrapedCoverImage[0];
+                        } 
+                    }
 
                     this._currentlyPlaying.kpop = {
-                        cover: (data.albums[0]) ? ((data.albums[0].image) ? `https://cdn.listen.moe/covers/${data.albums[0].image}` : 'https://img.kirameki.one/3OqzABNx.png') : 'https://img.kirameki.one/3OqzABNx.png', 
+                        cover: coverImage, 
                         artist: data.artists[0].name,
                         title: data.title,
                         duration: HinoiriHelper.timeFormat(data.duration),
@@ -108,7 +119,7 @@ class Hinoiri extends Chariot.Client {
             heartbeatInterval = null;
         }
 
-        ws.onmessage = (message) => {
+        ws.onmessage = async (message) => {
             if (!message.data.length) return;
 
             let response = null;
@@ -133,9 +144,20 @@ class Hinoiri extends Chariot.Client {
                     }
 
                     const data = response.d.song;
+                    let coverImage = 'https://img.kirameki.one/3OqzABNx.png';
+
+                    if (data.albums[0] && data.albums[0].image) {
+                        coverImage = `https://cdn.listen.moe/covers/${data.albums[0].image}`;
+                    } else {
+                        const scrapedCoverImage = await HinoiriHelper.scrapeBingImages(`${data.title} by ${data.artists[0].name}`);
+
+                        if (scrapedCoverImage.length > 0) {
+                            coverImage = scrapedCoverImage[0];
+                        } 
+                    }
 
                     this._currentlyPlaying.jpop = {
-                        cover: (data.albums[0]) ? ((data.albums[0].image) ? `https://cdn.listen.moe/covers/${data.albums[0].image}` : 'https://img.kirameki.one/3OqzABNx.png') : 'https://img.kirameki.one/3OqzABNx.png', 
+                        cover: coverImage, 
                         artist: data.artists[0].name,
                         title: data.title,
                         duration: HinoiriHelper.timeFormat(data.duration),
