@@ -31,7 +31,7 @@ class Hinoiri extends Chariot.Client {
      * Subscribes to the K-Pop info websocket for the 'Now Playing' feature
      */
     _wsKpop() {
-        const ws = HinoiriHelper.connectToRadioWebsocket('kpop');
+        let ws = HinoiriHelper.connectToRadioWebsocket('kpop');
         let heartbeatInterval = null;
 
         ws.onopen = () => {
@@ -111,7 +111,7 @@ class Hinoiri extends Chariot.Client {
      * Subscribes to the J-Pop info websocket for the 'Now Playing' feature
      */
     _wsJpop() {
-        const ws = HinoiriHelper.connectToRadioWebsocket('jpop');
+        let ws = HinoiriHelper.connectToRadioWebsocket('jpop');
         let heartbeatInterval = null;
 
         ws.onopen = () => {
