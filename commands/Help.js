@@ -16,7 +16,7 @@ class Help extends Chariot.Command {
 
     async execute(message, args, chariot) {
         if (!args[0]) {
-            const commandNames = chariot.commands.map((cmnds) => '`' + cmnds.name + '`');
+            const commandNames = chariot.commands.filter((cmnds) => !cmnds.owner).map((cmnds) => '`' + cmnds.name + '`');
 
             return message.channel.createEmbed(new Chariot.RichEmbed()
                 .setColor(chariot.chariotOptions.chariotConfig.primaryColor || 'RANDOM')
